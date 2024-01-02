@@ -36,7 +36,7 @@ export default function App() {
     
     return (
         <main>
-        {/* {
+        {
             notes.length > 0 
             ?
             <Split 
@@ -70,7 +70,7 @@ export default function App() {
                 </button>
             </div>
             
-        } */}
+        }
         </main>
     )
 }
