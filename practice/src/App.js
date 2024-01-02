@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Content from './components/Content';
 import Footer from './components/Footer';
@@ -6,11 +6,18 @@ import Footer from './components/Footer';
  
 
 function App() {
+
+  const [theme, setTheme] = useState(true)
+
+  function onclick() {
+     
+     setTheme(theme => !theme)
+  }
   
   return (
     <div className="App">
-    <Header/>
-    <Content/>
+    <Header onClick = {onclick} isDarkMode = {theme}/>
+    <Content isDarkMode = {theme} />
     <Footer/>
  
      

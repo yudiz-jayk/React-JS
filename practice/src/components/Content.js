@@ -1,8 +1,8 @@
 import React from "react";
 
-function Content() {
+function Content({isDarkMode}) {
     return (
-       <div className="container">
+       <div className={`container ${isDarkMode ? 'dark-mode':""}` } >
 
        <h1>Why i should React</h1>
         <ul>
