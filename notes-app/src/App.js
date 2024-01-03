@@ -1,11 +1,13 @@
 import React from "react"
-import Sidebar from "../../demo-app/src/components/Sidebar"
-import Editor from "../../demo-app/src/components/Editor"
+import Sidebar from "./components/Sidebar"
+import Editor from "./components/Editor"
 // import { data } from "./data"
 import Split from "react-split"
 import {nanoid} from "nanoid"
 
 export default function App() {
+    console.log(JSON.parse(localStorage.getItem('notes')));
+    
     const [notes, setNotes] = React.useState([])
     const [currentNoteId, setCurrentNoteId] = React.useState(
         (notes[0] && notes[0].id) || ""
@@ -16,16 +18,27 @@ export default function App() {
             id: nanoid(),
             body: "# Type your markdown note's title here"
         }
-        setNotes(prevNotes => [newNote, ...prevNotes])
-        setCurrentNoteId(newNote.id)
+
+        setNotes(prevNotes => {
+            setCurrentNoteId(newNote.id)
+            localStorage.setItem('notes', JSON.stringify([newNote, ...prevNotes]))
+           return [newNote, ...prevNotes]
+        })
+
+   
     }
     
     function updateNote(text) {
-        setNotes(oldNotes => oldNotes.map(oldNote => {
+        setNotes(function(oldNotes) { 
+           return oldNotes.map(oldNote => {
+
             return oldNote.id === currentNoteId
                 ? { ...oldNote, body: text }
                 : oldNote
-        }))
+        })
+    })
+
+        
     }
     
     function findCurrentNote() {
@@ -36,7 +49,7 @@ export default function App() {
     
     return (
         <main>
-        {/* {
+        {
             notes.length > 0 
             ?
             <Split 
@@ -70,7 +83,7 @@ export default function App() {
                 </button>
             </div>
             
-        } */}
+        }
         </main>
     )
 }
