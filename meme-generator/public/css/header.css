@@ -1,0 +1,30 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.icongroup img {
+    max-width: 90px;
+}
+
+.icongroup h1 {
+    color: #FFF;
+    font-family: Karla;
+    font-size: 20.748px;
+    font-style: normal;
+    line-height: normal;
+    font-size: 2rem;
+}
+
+.icongroup {
+    display: flex;
+    gap:1rem;
+    margin-left: 3rem;
+    padding: 1rem;
+    align-items: center;
+}
+
+nav {
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+}
