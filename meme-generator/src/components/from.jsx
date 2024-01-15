@@ -1,26 +1,36 @@
 function Form() {
     return (
-        <div className="form">
+        <>
+            <div className="form">
 
-            <div className="fields">
+                <div className="fields">
 
-                <div className="field">
-                    <label htmlFor="Top text">Top Text</label>
-                    <input type="text" name="ttext" id="ttext" />
+                    <div className="field">
+                        <label htmlFor="Top text">Top Text</label>
+                        <input type="text" name="ttext" id="ttext" />
+                    </div>
+
+                    <div className="field">
+                        <label htmlFor="Bottumn text">Bottom Text</label>
+                        <input type="text" name="ttext" id="ttext" />
+                    </div>
+
                 </div>
 
-                <div className="field">
-                    <label htmlFor="Bottumn text">Bottom Text</label>
-                    <input type="text" name="ttext" id="ttext" />
-                </div>
+
+
+                <input type="button" value="Generate a new meme image" className="memeSubmitButton" />
 
             </div>
 
+            <div className="meme">
+                <img src="" alt="" />
+            </div>
+        </>
 
 
-            <input type="button" value="Generate a new meme image" className="memeSubmitButton" />
 
-        </div>
+
     )
 }
 
