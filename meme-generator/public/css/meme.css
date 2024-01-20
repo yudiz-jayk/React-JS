@@ -1,0 +1,29 @@
+.meme {
+    display: flex;
+    align-self: center;
+    margin-top: 2rem;
+    position: relative;
+    width: 900px;
+   
+}
+
+.meme--text {
+    position: absolute;
+    text-align: center;
+    font-size: 3rem;
+     
+}
+
+.top {
+    top: 0;
+   
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.meme img {
+    width: 900px;
+    max-height: 500px;
+}

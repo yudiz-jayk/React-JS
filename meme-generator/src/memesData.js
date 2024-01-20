@@ -1,7 +1,4 @@
-export default {
-    "success": true,
-    "data": {
-        "memes": [
+const data = [
             {
                 "id": "181913649",
                 "name": "Drake Hotline Bling",
@@ -803,5 +800,5 @@ export default {
                 "box_count": 2
             }
         ]
-    }
-}
+ 
+export  {data}

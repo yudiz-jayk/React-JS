@@ -1,4 +1,27 @@
+import { useState } from 'react'
+
+const {data} =require('../memesData')
+
+
 function Form() {
+
+    const [meme,setMeme] = useState({firstName:"", lastName:"",imageUrl:"https://i.imgflip.com/30b1gx.jpg"})
+    
+    function changeStatus(e) {
+        const {name,value} =e.target
+        console.log({name,value});
+       setMeme((prevState)=>{
+          return {...prevState,[name]:value}
+       })   
+    }
+
+    function generateMemeImage() {
+        setMeme((prevState)=>{
+            return {...prevState,imageUrl:data[Math.floor(Math.random() * 100) ].url}
+         })   
+    }
+
+
     return (
         <>
             <div className="form">
@@ -6,25 +29,27 @@ function Form() {
                 <div className="fields">
 
                     <div className="field">
-                        <label htmlFor="Top text">Top Text</label>
-                        <input type="text" name="ttext" id="ttext" />
+                        <label htmlFor="firstName">Top Text</label>
+                        <input type="text" name="firstName" id="firstName" value={meme.firstName} onChange={changeStatus} />
                     </div>
 
                     <div className="field">
-                        <label htmlFor="Bottumn text">Bottom Text</label>
-                        <input type="text" name="ttext" id="ttext" />
+                        <label htmlFor="lastName">Bottom Text</label>
+                        <input type="text" name="lastName" id="lastName" value={meme.lastName} onChange={changeStatus} />
                     </div>
 
                 </div>
 
 
 
-                <input type="button" value="Generate a new meme image" className="memeSubmitButton" />
+                <input type="button" value="Generate a new meme image" className="memeSubmitButton" onClick={generateMemeImage} />
 
             </div>
 
             <div className="meme">
-                <img src="" alt="" />
+                <img src={meme.imageUrl} alt="meme img`"  />
+                <h1 className="meme--text top">{meme.firstName}</h1>
+                <h1 className="meme--text bottom">{meme.lastName}</h1>
             </div>
         </>
 

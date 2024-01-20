@@ -5,7 +5,7 @@ import Container from './components/container'
 function App() {
   return (
     <>
-     <Header test='yes this the way'/>
+     <Header  />
      <Container/>
      </>
   );
