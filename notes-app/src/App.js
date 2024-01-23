@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Sidebar from "./components/Sidebar"
 import Editor from "./components/Editor"
 // import { data } from "./data"
@@ -6,14 +6,22 @@ import Split from "react-split"
 import {nanoid} from "nanoid"
 
 export default function App() {
-    console.log(JSON.parse(localStorage.getItem('notes')));
+     
+    const [notes, setNotes] = React.useState(function() {
+        return JSON.parse(localStorage.getItem('notes'))|| []
+    })
+ 
     
-    const [notes, setNotes] = React.useState([])
     const [currentNoteId, setCurrentNoteId] = React.useState(
         (notes[0] && notes[0].id) || ""
     )
+
+    useEffect(()=>{
+        localStorage.setItem('notes', JSON.stringify(notes))
+    },[notes])
     
     function createNewNote() {
+        console.log('fired new notes');
         const newNote = {
             id: nanoid(),
             body: "# Type your markdown note's title here"
@@ -24,21 +32,18 @@ export default function App() {
             localStorage.setItem('notes', JSON.stringify([newNote, ...prevNotes]))
            return [newNote, ...prevNotes]
         })
-
    
     }
+    
     
     function updateNote(text) {
         setNotes(function(oldNotes) { 
            return oldNotes.map(oldNote => {
-
             return oldNote.id === currentNoteId
                 ? { ...oldNote, body: text }
                 : oldNote
         })
-    })
-
-        
+    }) 
     }
     
     function findCurrentNote() {
@@ -71,6 +76,7 @@ export default function App() {
                         updateNote={updateNote} 
                     />
                 }
+                
             </Split>
             :
             <div className="no-notes">
