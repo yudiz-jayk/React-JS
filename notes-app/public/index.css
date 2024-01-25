@@ -138,3 +138,7 @@ button:focus {
     align-items: center;
     background-color: whitesmoke;
 }
+
+.text-button {
+    margin-right: 2rem;
+}

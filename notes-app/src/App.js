@@ -51,6 +51,23 @@ export default function App() {
             return note.id === currentNoteId
         }) || notes[0]
     }
+
+    function deleteNote(id) {
+       setNotes((oldNotes)=>{
+        const newNotes = oldNotes.filter(function(ele,index){
+            if(id!==ele.id) return true
+            else {
+                if(notes[index+1]) setCurrentNoteId(notes[index+1].id)
+                else if(notes[index-1])setCurrentNoteId(notes[index-1].id)
+                else setCurrentNoteId("")
+             
+                return false
+            }
+        });
+
+        return newNotes
+       })
+    }
     
     return (
         <main>
@@ -67,6 +84,7 @@ export default function App() {
                     currentNote={findCurrentNote()}
                     setCurrentNoteId={setCurrentNoteId}
                     newNote={createNewNote}
+                    deleteNote={deleteNote}
                 />
                 {
                     currentNoteId && 
